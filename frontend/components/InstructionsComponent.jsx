@@ -1,5 +1,7 @@
 import styles from "../styles/InstructionsComponent.module.css";
 import Router, { useRouter } from "next/router";
+import { useSigner, useNetwork  } from 'wagmi'
+
 export default function InstructionsComponent() {
 	const router = useRouter();
 	return (
@@ -89,9 +91,27 @@ function PageBody() {
 
 
 function WalletInfo() {
+	const { data: signer, isError, isLoading } = useSigner();
+	const { chain, chains } = useNetwork();
+	
+	if (signer) return (
+		<>
+			<p>Your account address is {signer_address}</p>
+			<p>Congratulation, you have connected to the {chain.name} network </p>
+			<p>Your account address is {Math.random()}</p>
+		</>
+
+	)
+
+	if (isLoading) return (
+		<>
+			<p>Wait a while, the wallet is loading</p>
+		</>
+	)
+
 	return (
 		<>
-			<p>Wallet info</p>
+			<p>Connect a Wallet</p>
 		</>
 	)
 }
