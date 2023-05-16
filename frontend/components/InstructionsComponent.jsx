@@ -8,79 +8,18 @@ export default function InstructionsComponent() {
 		<div className={styles.container}>
 			<header className={styles.header_container}>
 				<h1>
-					create<span>-web3-dapp</span>
+					MyApp
 				</h1>
-				<p>
-					Get started by editing this page in{" "}
-					<span>/pages/index.js</span>
-				</p>
 			</header>
-
 			<div className={styles.buttons_container}>
-				<a
-					target={"_blank"}
-					href={"https://createweb3dapp.alchemy.com/#components"}
-				>
-					<div className={styles.button}>
-						{/* <img src="https://static.alchemyapi.io/images/cw3d/Icon%20Medium/lightning-square-contained-m.svg" width={"20px"} height={"20px"} /> */}
-						<p>Add Components</p>
-					</div>
-				</a>
-				<a
-					target={"_blank"}
-					href={"https://createweb3dapp.alchemy.com/#templates"}
-				>
-					<div className={styles.button}>
-						{/* <img src="https://static.alchemyapi.io/images/cw3d/Icon%20Medium/lightning-square-contained-m.svg" width={"20px"} height={"20px"} /> */}
-						<p>Explore Templates</p>
-					</div>
-				</a>
-				<a
-					target={"_blank"}
-					href={"https://docs.alchemy.com/docs/create-web3-dapp"}
-				>
-					<div className={styles.button}>
-						<img
-							src="https://static.alchemyapi.io/images/cw3d/Icon%20Large/file-eye-01-l.svg"
-							width={"20px"}
-							height={"20px"}
-						/>
-						<p>Visit Docs</p>
-					</div>
-				</a>
+					<PageBody></PageBody>
 			</div>
 			<div className={styles.footer}>
-				<a href="https://alchemy.com/?a=create-web3-dapp" target={"_blank"}>
-					<img
-						id="badge-button"
-						style={{ width: "240px", height: "53px" }}
-						src="https://static.alchemyapi.io/images/marketing/badgeLight.png"
-						alt="Alchemy Supercharged"
-					/>
-				</a>
-				<div className={styles.icons_container}>
-					<div>
-						<a
-							href="https://github.com/alchemyplatform/create-web3-dapp"
-							target={"_blank"}
-						>
-							Leave a star on Github
-						</a>
-					</div>
-					<div>
-						<a
-							href="https://twitter.com/AlchemyPlatform"
-							target={"_blank"}
-						>
-							Follow us on Twitter
-						</a>
-					</div>
-				</div>
+				Footer
 			</div>
 		</div>
 	);
 }
-
 function PageBody() {
 	return (
 		<>
@@ -93,14 +32,12 @@ function PageBody() {
 function WalletInfo() {
 	const { data: signer, isError, isLoading } = useSigner();
 	const { chain, chains } = useNetwork();
-	
 	if (signer) return (
 		<>
-			<p>Your account address is {signer_address}</p>
-			<p>Congratulation, you have connected to the {chain.name} network </p>
-			<p>Your account address is {Math.random()}</p>
+			<p>Your account address is {signer._address}</p>
+			<p>connected to the {chain.name} network </p>
+			<button onClick={() => {}}> Sign</button>
 		</>
-
 	)
 
 	if (isLoading) return (
@@ -114,4 +51,12 @@ function WalletInfo() {
 			<p>Connect a Wallet</p>
 		</>
 	)
+}
+
+
+function signMessage(signer, message) {
+	signer.signMessage(message).then(
+		(response) => {console.log(response)}, 
+		(error) => {console.error(error)}
+		)
 }
