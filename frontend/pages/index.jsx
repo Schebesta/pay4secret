@@ -1,5 +1,5 @@
 import styles from "../styles/Home.module.css";
-import InstructionsComponent from "../components/InstructionsComponent";
+import InstructionsComponent from "../components/navigation/InstructionsComponent";
 
 export default function Home() {
   return (
