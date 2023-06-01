@@ -14,6 +14,7 @@ export default function InstructionsComponent() {
 				</h1>
 			</header>
 			<div className={styles.buttons_container}>
+				<GetTokenNumber></GetTokenNumber>
 				<WalletComponent></WalletComponent>
 				<PageBody></PageBody>
 			</div>
@@ -89,15 +90,66 @@ function RequestTokens() {
 
 function requestTokens(signer, signature, setLoading, setTxData) {
 	setLoading(true);
+
 	const requestOptions = {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({ address: signer._address, mintValue:"1", signature: signature })
 	};
+
 	fetch('http://localhost:3001/request-tokens', requestOptions)
 		.then(response => response.json())
 		.then((data) => {
 			setTxData(data);
 			setLoading(false);
 		});
+	console.log()
+}
+
+function GetTokenNumber() {
+	const { data: signer } = useSigner();
+	const [txData, setTxData] = useState(null);
+	const [isLoading, setLoading] = useState(false);
+
+	if (txData) return (
+		<div>
+			<p>Revenu compte est {txData}
+			</p>
+		</div>
+	);
+
+	if (isLoading) return (
+		<div>
+			<p>Requesting tokens holder to be fetched...for address {}</p>
+		</div>
+	);
+
+	return (
+		<div>
+			<p>get the token number of the address </p>
+			<button onClick={() => getTokenNumber(signer, txData, setLoading, setTxData)}>Token MTK Holded</button>
+		</div>
+			
+	);
+	
+}
+
+function getTokenNumber(signer, txData, setLoading, setTxData) {
+	setLoading(true);
+	const requestOptions = {
+		method: "GET",
+		headers: { "Content-Type": "application/json" }
+		// body: JSON.stringify({address:txData})
+	};
+
+
+
+	fetch(`http://localhost:3001/get-token-number/0x2471B1373F20f52e5ce6Cd0D08b4cE56a75acc44`, requestOptions)
+		.then(response => response)
+		.then((data) => {
+			setTxData(data);
+			setLoading(false);
+		});
+
+	console.log(requestOptions)
 }
