@@ -26,15 +26,16 @@ export function fetchText(address, requestPath) {
 		});
 }
 
-export function fetchBody(address, requestPath) {
+export function fetchBody(requestPath) {
 	const baseUrl = 'http://localhost:3001/'
 	setLoading(true);
 	const requestOptions = {
 		method: "GET",
-		headers: { "Content-Type": "application/json" }
+		headers: { "Content-Type": "application/json" },
+		body: {}
 	};
-
-	fetch(`${baseUrl}${requestPath}/${address}`, requestOptions)
+	console.log("test")
+	fetch(`${baseUrl}${requestPath}`, requestOptions)
 		.then(response => response.body) 
 		.then((response) => {
 			setTxData(response);

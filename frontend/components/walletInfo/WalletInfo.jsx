@@ -46,3 +46,10 @@ function WalletBalance() {
 		</>
 	)
 }
+
+function signMessage(signer, message) {
+	signer.signMessage(message).then(
+		(response) => { console.log(response) },
+		(error) => { console.error(error) }
+	)
+}
