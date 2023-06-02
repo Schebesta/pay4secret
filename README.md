@@ -5,8 +5,8 @@
 
 -----
 ## new
-- [] cast votes -
 - [] delegate -
+- [] cast votes -
 - [] query results on chain -
 - [x] Request voting tokens to be minted using the API -
 (bonus) 
