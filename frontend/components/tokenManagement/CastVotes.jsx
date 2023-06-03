@@ -82,15 +82,34 @@ function getCastVote(
     console.log('signer',signer)
     setLoading(true);
     const baseUrl = 'http://localhost:3001/'
+
+
     console.log(`${baseUrl}${requestPath}`)
+    console.log({
+        SIGNER: signer,
+        PROPOSAL: Proposal,
+        VOTED_AMOUNT: VotedAmount,
+    })
+    console.log(JSON.stringify({
+        SIGNER: signer.toString(),
+        PROPOSAL: Proposal,
+        VOTED_AMOUNT: VotedAmount,
+    }))
+    const signerAPI = JSON.stringify(signer)
+    console.log({
+        SIGNER: signerAPI,
+        PROPOSAL: Proposal,
+        VOTED_AMOUNT: VotedAmount,
+    })
+
+
 	const requestOptions = {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            SIGNER: signer,
+            SIGNER: signerAPI,
             PROPOSAL: Proposal,
             VOTED_AMOUNT: VotedAmount,
-            signature: signature
         })
 	};
     console.log('request : '+requestOptions)
