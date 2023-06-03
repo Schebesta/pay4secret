@@ -15,6 +15,7 @@ import { fetchBody } from "../hook/fetch";
 
 
 export function GetCastVote() {
+    // const { data: signer, isError, isLoading } = useSigner();
     const { data: signer } = useSigner();
     const [txData, setTxData] = useState(null);
     const [isLoading, setLoading] = useState(false);
@@ -22,6 +23,8 @@ export function GetCastVote() {
     const [Proposal, setProposal] = useState('');
     const [VotedAmount, setVotedAmount] = useState('')
 
+    // const [txSigner, setTxSigner] = useState(null)
+    // setTxSigner(signer)
     const handleInputProposal = (event) => {
         setProposal(event.target.value);
     };
@@ -30,16 +33,6 @@ export function GetCastVote() {
         setVotedAmount(event.target.value);
     };
 
-    const fetchData = () => {
-        setLoadingProposal(true);
-        setLoadingProposal(false);
-
-        // Effectuez votre fetch avec l'URL contenant l'adresse entrée par l'utilisateur
-        // Utilisez `Proposal` dans votre URL de requête fetch
-        // Mettez à jour le state `isLoading` lorsque les données sont récupérées
-    };
-
-    // console.log(signer._Proposal)
 
     if (txData) return (
         <>
@@ -55,8 +48,8 @@ export function GetCastVote() {
     );
 
     // list of arguments
-    return (
-        <>
+    if (signer) return (
+            <>
             <p><input type="text" value={Proposal} onChange={handleInputProposal} />Proposal Number</p>
             <p><input type="text" value={VotedAmount} onChange={handleInputVote} />Voted Amount</p>
             <p><button 
@@ -86,6 +79,7 @@ function getCastVote(
     txData
     ) {
 
+    console.log('signer',signer)
     setLoading(true);
     const baseUrl = 'http://localhost:3001/'
     console.log(`${baseUrl}${requestPath}`)
@@ -93,11 +87,13 @@ function getCastVote(
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+            SIGNER: signer,
             PROPOSAL: Proposal,
-            VOTED_AMOUNT: VotedAmount
-          })
+            VOTED_AMOUNT: VotedAmount,
+            signature: signature
+        })
 	};
-    console.log(requestOptions)
+    console.log('request : '+requestOptions)
 
 	fetch(`${baseUrl}${requestPath}`, requestOptions)
 		.then(response => response.body) 

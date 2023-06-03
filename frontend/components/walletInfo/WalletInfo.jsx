@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 export default function WalletInfo() {
 	const { data: signer, isError, isLoading } = useSigner();
 	const { chain, chains } = useNetwork();
+
+
 	if (signer) return (
 		<>
 			<h2>Wallet informations</h2>
@@ -40,9 +42,14 @@ function WalletBalance() {
 
 	if (isError) return <div>Error fetching balance</div>
 
+	useEffect(() => {
+		console.log(`signer changed to`, signer)
+	}, [signer])
+
 	return (
 		<>
 		 	<p>Balance: {data?.formatted} {data?.symbol}</p>
+			<p>Signer: {signer?._address}</p>
 		</>
 	)
 }
