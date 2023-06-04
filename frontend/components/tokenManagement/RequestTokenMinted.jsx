@@ -20,7 +20,7 @@ function RequestTokens() {
     if (txData) return (
         <>
             <p>Transaction completed!</p>
-            <a href={"https://sepolia.etherscan.io/tx/" + txData.hash} target="_blank">{txData.hash}</a>
+            <a href={"https://mumbai.polygonscan.com/tx/" + txData.hash} target="_blank">{txData.hash}</a>
         </>
     )
     if (isLoading) return (

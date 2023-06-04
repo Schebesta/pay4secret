@@ -6,7 +6,9 @@ import WalletComponent from "./walletInfo/WalletInfo";
 import { GetTokenNumber } from "./tokenManagement/GetTokenNumber";
 import { MinterToken } from "./tokenManagement/RequestTokenMinted";
 import Profile from "./profile/Profile";
-import { GetCastVote } from "./tokenManagement/CastVotes";
+import { GetCastVote } from "./ballotManagement/CastVotes";
+import { DelegateEx } from "./tokenManagement/DelegateVote";
+import { Telegator } from "./tokenManagement/Delegate";
 
 export default function InstructionsComponent() {
 	const router = useRouter();
@@ -24,9 +26,10 @@ export default function InstructionsComponent() {
 				<GetTokenNumber></GetTokenNumber>
 				<h2 className={styles.header_container}>MintToken</h2>
 				<MinterToken></MinterToken>
+				<h2 className={styles.header_container}>Delegate</h2>
+				<DelegateEx></DelegateEx>
 				<h2 className={styles.header_container}>CastVotes</h2>
 				<GetCastVote></GetCastVote>
-
 			</div>
 			<div className={styles.footer}>
 				Footer
