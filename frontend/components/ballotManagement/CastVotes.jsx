@@ -6,25 +6,36 @@ import WalletComponent from "../walletInfo/WalletInfo";
 import { fetchBody } from "../hook/fetch";
 
 
-// cast-vote
+export function GetCastVoteEx1() {
+    return (
+        <div>
+                <GetCastVote></GetCastVote>
+        </div>
+    )
+  }
+  
 
-// {
-//     "PROPOSAL": "string",
-//     "VOTED_AMOUNT": "string"
-//   }
 
+function GetCastVote() {
+    // // const { data: signer, isError, isLoading } = useSigner();
+    // const { data: signer } = useSigner();
+    // const [txData, setTxData] = useState(null);
+    // const [isLoading, setLoading] = useState(false);
+    // const [isLoadingAdress, setLoadingProposal] = useState(false);
+    // const [Proposal, setProposal] = useState('');
+    // const [VotedAmount, setVotedAmount] = useState('')
 
-export function GetCastVote() {
-    // const { data: signer, isError, isLoading } = useSigner();
+    // // const [txSigner, setTxSigner] = useState(null)
+    // // setTxSigner(signer)
+
     const { data: signer } = useSigner();
     const [txData, setTxData] = useState(null);
     const [isLoading, setLoading] = useState(false);
-    const [isLoadingAdress, setLoadingProposal] = useState(false);
+    const [DelegatedAddress, setDelegatedAddress] = useState('')
     const [Proposal, setProposal] = useState('');
     const [VotedAmount, setVotedAmount] = useState('')
 
-    // const [txSigner, setTxSigner] = useState(null)
-    // setTxSigner(signer)
+
     const handleInputProposal = (event) => {
         setProposal(event.target.value);
     };
@@ -34,6 +45,13 @@ export function GetCastVote() {
     };
 
 
+    if (isLoading) return (
+        <>
+            <p>Send Voting Transaction ...</p>
+        </>
+    );
+
+
     if (txData) return (
         <>
             <p>The account Token Number is {txData}</p>
@@ -41,11 +59,7 @@ export function GetCastVote() {
         </>
     );
 
-    if (isLoading) return (
-        <>
-            <p>Send Voting Transaction ...</p>
-        </>
-    );
+
 
     // list of arguments
     if (signer) return (
@@ -60,7 +74,6 @@ export function GetCastVote() {
                 VotedAmount,
                 setLoading,
                 setTxData,
-                txData
                 )}>Send Vote
             </button></p>
             <p>{ }</p>
@@ -76,51 +89,29 @@ function getCastVote(
     VotedAmount,
     setLoading,
     setTxData,
-    txData
     ) {
 
-    console.log('signer',signer)
     setLoading(true);
-    const baseUrl = 'http://localhost:3001/'
+    
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ SIGNER: signer, PROPOSAL: Proposal,
+            VOTED_AMOUNT: VotedAmount  })
+    };
 
+	// const requestOptions = {
+	// 	method: "POST",
+	// 	headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ SIGNER: signer, PROPOSAL: Proposal,
+    //         VOTED_AMOUNT: VotedAmount,
+    //     })
+	// };
 
-    console.log(`${baseUrl}${requestPath}`)
-    console.log({
-        SIGNER: signer,
-        PROPOSAL: Proposal,
-        VOTED_AMOUNT: VotedAmount,
-    })
-    console.log(JSON.stringify({
-        SIGNER: signer.toString(),
-        PROPOSAL: Proposal,
-        VOTED_AMOUNT: VotedAmount,
-    }))
-    const signerAPI = JSON.stringify(signer)
-    console.log({
-        SIGNER: signerAPI,
-        PROPOSAL: Proposal,
-        VOTED_AMOUNT: VotedAmount,
-    })
-
-
-	const requestOptions = {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            SIGNER: signerAPI,
-            PROPOSAL: Proposal,
-            VOTED_AMOUNT: VotedAmount,
-        })
-	};
-    console.log('request : '+requestOptions)
-
-	fetch(`${baseUrl}${requestPath}`, requestOptions)
-		.then(response => response.body) 
-		.then((txData) => {
-			setTxData(txData);
-			setLoading(false);
-		});
-    console.log(txData)
+    fetch('http://localhost:3001/cast-vote', requestOptions)
+        .then(response => response.json())
+        .then((data) => {
+            setTxData(data);
+            setLoading(false);
+        });
 }
-
-

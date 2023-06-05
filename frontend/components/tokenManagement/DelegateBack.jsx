@@ -13,7 +13,7 @@ export function DelegateEx1() {
     )
   }
   
-  function Delegate() {
+function Delegate() {
     
     const { data: signer } = useSigner();
     const [txData, setTxData] = useState(null);
