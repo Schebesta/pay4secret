@@ -49,7 +49,6 @@ function WalletBalance() {
 	return (
 		<>
 		 	<p>Balance: {data?.formatted} {data?.symbol}</p>
-			<p>Signer: {signer?._address}</p>
 		</>
 	)
 }

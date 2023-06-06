@@ -65,7 +65,7 @@ function GetCastVote() {
 
         <>
 
-            <p>Vote is done <p>Transaction at:  <a href={"https://mumbai.polygonscan.com/tx/" + txData.hash} target="_blank">{txData.hash}</a> </p> : <p></p> </p>
+            <p>Vote is done <p>Transaction at:  <a href={"https://mumbai.polygonscan.com/tx/" + txData.hash} target="_blank">{txData.hash}</a> </p>  <p></p> </p>
             {/* <p>The Voting Transaction is {txData}</p> */}
             {/* <p>Voted for the proposal : {Proposal}</p> */}
         </>
@@ -76,6 +76,12 @@ function GetCastVote() {
     // list of arguments
     if (signer) return (
         <>
+            <p>Choose a number and a value for the vote
+                <li>0: GITS</li>
+                <li>1: Solid</li>
+                <li>2: State</li>
+                <li>3: Society</li>
+            </p>
             <p><input type="text" value={Proposal} onChange={handleInputProposal} />Proposal Number</p>
             <p><input type="text" value={VotedAmount} onChange={handleInputVote} />Voted Amount</p>
             <p><button
@@ -106,8 +112,6 @@ function getCastVote(
         .then((data) => { // <-- Add the parameter to capture the returned data
             setTxData(data);
             setLoading(false);
-            console.log("VoteCasted");
-            console.log(data);
         }).catch((err) => {
             console.log(err);
         });

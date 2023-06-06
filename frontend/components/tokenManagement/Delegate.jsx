@@ -73,10 +73,10 @@ function Delegate() {
 
     
     return (
-    <div>
-        <p><input type="text" value={DelegatedAddress} onChange={handleInputDelegatedAddress} />Delegated Address</p>
-        <button onClick={() => delegate(signer, DelegatedAddress, tokenContract, setLoading, setTxData, setError)}>Delegate</button>
-    </div>
+        <>
+            <p><input type="text" value={DelegatedAddress} onChange={handleInputDelegatedAddress} />Delegated Address</p>
+            <button onClick={() => delegate(signer, DelegatedAddress, tokenContract, setLoading, setTxData, setError)}>Delegate</button>
+        </>
     )
 
 }

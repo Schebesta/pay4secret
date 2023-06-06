@@ -8,15 +8,11 @@ import { ethers } from 'ethers';
 import * as tokenJson from '../../assets/MyToken.json';
 import * as tokenizedBallotJson from '../../assets/TokenizedBallot.json';
 
-import * as dotenv from "dotenv";
-dotenv.config();
-
-
 const TOKEN_ADDRESS="0xB6501b20Db186BBe42D7b50624AcBbdFAF20525a"
 const BALLOT_ADDRESS="0xAb4a059e83B3bFB731CfDE1DA0dC4d54fdF0a66E"
 
 
-export function QueryResultEx1() {
+export function QueryResultComponent() {
     return (
         <div>
             <QueryResult></QueryResult>
@@ -28,8 +24,6 @@ function QueryResult() {
     const { data: signer } = useSigner();
     const [txData, setTxData] = useState(null);
     const [isLoading, setLoading] = useState(false);
-    const [Proposal, setProposal] = useState('');
-    const [VotedAmount, setVotedAmount] = useState('')
 
     const chainId = 80001
     const provider = new ethers.providers.AlchemyProvider(chainId, process.env.ALCHEMY_API_KEY);
@@ -52,62 +46,46 @@ function QueryResult() {
         provider
     );
 
-
-
     if (isLoading) return (
         <>
-            <p>Send Casting Transaction ...</p>
+            <p>Querying Result ...</p>
         </>
     );
-
 
     if (txData) return (
-
         <>
-
-            <p>Vote is done <p>Transaction at:  <a href={"https://mumbai.polygonscan.com/tx/" + txData.hash} target="_blank">{txData.hash}</a> </p> : <p></p> </p>
-            {/* <p>The Voting Transaction is {txData}</p> */}
-            {/* <p>Voted for the proposal : {Proposal}</p> */}
+            <p>The winning proposition is : {ethers.utils.parseBytes32String(txData)}</p>
         </>
     );
-
-
 
     // list of arguments
     if (signer) return (
         <>
-            <p><input type="text" value={Proposal} onChange={handleInputProposal} />Proposal Number</p>
-            <p><input type="text" value={VotedAmount} onChange={handleInputVote} />Voted Amount</p>
+            <h2>Winner Proposal Name</h2>
             <p><button
-                onClick={() => QueryResult(
+                onClick={() => queryResult(
                     signer,
                     TokenizedBallotContract,
-                    Proposal,
-                    ethers.utils.parseUnits(VotedAmount),
                     setLoading,
                     setTxData,
-                )}>Send Vote
+                )}>Query Result
             </button></p>
         </>
     );
 
 }
 
-function QueryResult(
-    signer,
+function queryResult(
+    signer, 
     TokenizedBallotContract,
-    Proposal,
-    VotedAmount,
     setLoading,
     setTxData,
 ) {
     setLoading(true);
-    TokenizedBallotContract.connect(signer).vote(Proposal, VotedAmount)
+    TokenizedBallotContract.connect(signer).winnerName()
         .then((data) => { // <-- Add the parameter to capture the returned data
             setTxData(data);
             setLoading(false);
-            console.log("VoteCasted");
-            console.log(data);
         }).catch((err) => {
             console.log(err);
         });

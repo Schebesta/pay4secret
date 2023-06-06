@@ -9,6 +9,7 @@ import Profile from "./profile/Profile";
 import { GetCastVoteEx1 } from "./ballotManagement/CastVotes";
 import { DelegateEx1 } from "./tokenManagement/DelegateBack";
 import { DelegateEx2 } from "./tokenManagement/Delegate";
+import { QueryResultComponent } from "./ballotManagement/QueryResult";
 
 export default function InstructionsComponent() {
 	const router = useRouter();
@@ -22,7 +23,7 @@ export default function InstructionsComponent() {
 			<div className={styles.buttons_container}>
 				<h2 className={styles.header_container}>Wallet</h2>
 				<WalletComponent></WalletComponent>
-				<h2 className={styles.header_container}>TokenNumber</h2>
+				<h2 className={styles.header_container}>Query Token Number</h2>
 				<GetTokenNumber></GetTokenNumber>
 				<h2 className={styles.header_container}>MintToken</h2>
 				<MinterToken></MinterToken>
@@ -30,6 +31,9 @@ export default function InstructionsComponent() {
 				<DelegateEx2></DelegateEx2>
 				<h2 className={styles.header_container}>CastVotes</h2>
 				<GetCastVoteEx1></GetCastVoteEx1>
+				<h2 className={styles.header_container}>QueryResult</h2>
+				<QueryResultComponent></QueryResultComponent>
+
 			</div>
 			<div className={styles.footer}>
 				Footer
