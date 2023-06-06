@@ -1,71 +1,101 @@
-// import * as React from 'react';
-// import Router, { useRouter } from "next/router";
-// import { useSigner } from 'wagmi';
-// import { ethers, Contract } from 'ethers';
-// import * as tokenJson from '../../assets/MyToken.json';
-// import { useState, useEffect } from 'react';
+import * as React from 'react';
+import Router, { useRouter } from "next/router";
+import { useSigner } from 'wagmi';
+import { ethers, Contract } from 'ethers';
+import * as tokenJson from '../../assets/MyToken.json';
+import { useState, useEffect } from 'react';
+import dotenv from "dotenv";
 
-// const contractAddressToken = "0x35a24F28f846DB57F13B534799659824A81f31FF"
 
-// const contractAddressBallot = "0xc8e653ea3F2245C640506659180a3F2a2189AfB3"
+dotenv.config();
 
-// export function Telegator() {
-//   return (
-//       <div>
-//               <Delegator></Delegator>
-//       </div>
-//   )
-// }
 
-// function Delegator() {
-//   const [txData, setTxData] = useState();
-//   const [isLoading, setLoading] = useState(false);
-//   const { data: signer } = useSigner();
-//   const [DelegatedAddress, setDelegatedAddress] = useState('')
+console.log(dotenv)
+
+const TOKEN_ADDRESS="0xB6501b20Db186BBe42D7b50624AcBbdFAF20525a"
+const BALLOT_ADDRESS="0xAb4a059e83B3bFB731CfDE1DA0dC4d54fdF0a66E"
+
+
+export function DelegateEx2() {
+    return (
+        <div>
+                <Delegate></Delegate>
+        </div>
+    )
+  }
   
-//   const provider = new ethers.providers.InfuraProvider("sepolia", process.env.INFURA_API_KEY)
+function Delegate() {
 
-//   const handleInputDelegatedAddress = (event) => {
-//     setDelegatedAddress(event.target.value);
-//   };
+        
+    const { data: signer } = useSigner();
+    const [txData, setTxData] = useState(null);
+    const [isLoading, setLoading] = useState(false);
+
+    const [Error, setError] = useState(null)
+    const [DelegatedAddress, setDelegatedAddress] = useState('')
+
+    const chainId = 80001; // This is the chainId for Mumbai Testnet
+
+    const provider = new ethers.providers.AlchemyProvider(chainId, process.env.ALCHEMY_API_KEY);
 
 
-//   const tokenContract = new ethers.Contract(
-//     contractAddressToken,
-//     tokenJson.abi,
-//     provider
-//   );
+    const contractAddressToken = `${process.env.TOKEN_ADDRESS}`
+    const contractAddressTokenizedBallot = `${process.env.BALLOT_ADDRESS}`
 
-//     return (
-//       <div>
-//         <h1>Delegate voting power</h1>
-//         <button onClick={() => delegate(signer, signer._address, tokenContract, setLoading, setTxData)}>Delegate</button>
-//         {
-//           isLoading ? <p>Delegating voting power...</p> : <p></p>
-//         }
-//         {
-//           txData ? <p>Delegation is done {txData}</p> : <p></p>
-//         }
-//       </div>
-//     )
+    console.log(`ddd ${process.env.TOKEN_ADDRESS}`)
 
-// }
 
-// function delegate(signer, address, tokenContract, setLoading, setTxData) {
-//   setLoading(true);
-//   tokenContract
-//   .connect(signer)
-//   .delegate(signer._address)
-//    .then((data) => {
-//     //  console.log("Delegation succesfully1");
-//     setTxData(data);
-//     //  console.log("Delegation succesfully2");
-//     setLoading(false);
-//     //  console.log("Delegation succesfully3");
-//     console.log(data);
-//    }).catch((err) => {
-//     setError(err.reason); 
-//     setLoading(false);
-//     console.log(err);
-//    });
-// }
+    const handleInputDelegatedAddress = (event) => {
+      setDelegatedAddress(event.target.value);
+    };
+  
+
+    const tokenContract = new ethers.Contract(
+        TOKEN_ADDRESS,
+        tokenJson.abi,
+        provider
+    );
+
+
+    if (isLoading) return (
+        <>
+          <h2>Delegation informations</h2>
+          <p>Delegating voting power...</p>
+        </>
+      )
+    
+    if (txData) return (
+    <>
+        <p>Delegation is done <p>Delegated at:  <a href={"https://mumbai.polygonscan.com/tx/" + txData.hash} target="_blank">{txData.hash}</a> </p> : <p></p> </p>
+    </>
+
+    )
+
+    
+    return (
+    <div>
+        <p><input type="text" value={DelegatedAddress} onChange={handleInputDelegatedAddress} />Delegated Address</p>
+        <button onClick={() => delegate(signer, DelegatedAddress, tokenContract, setLoading, setTxData, setError)}>Delegate</button>
+    </div>
+    )
+
+}
+
+function delegate(signer, address, tokenContract, setLoading, setTxData, setError) {
+    setLoading(true);
+    tokenContract
+        .connect(signer)
+        .delegate(address)
+        .then((data) => {
+            //  console.log("Delegation succesfully1");
+            setTxData(data);
+            //  console.log("Delegation succesfully2");
+            setLoading(false);
+            //  console.log("Delegation succesfully3");
+            console.log(data);
+        }).catch((err) => {
+            setError(err.reason);
+            setLoading(false);
+            console.log(err);
+        });
+}

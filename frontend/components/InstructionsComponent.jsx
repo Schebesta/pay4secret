@@ -7,7 +7,8 @@ import { GetTokenNumber } from "./tokenManagement/GetTokenNumber";
 import { MinterToken } from "./tokenManagement/RequestTokenMinted";
 import Profile from "./profile/Profile";
 import { GetCastVoteEx1 } from "./ballotManagement/CastVotes";
-import { DelegateEx } from "./tokenManagement/DelegateVote";
+import { DelegateEx1 } from "./tokenManagement/DelegateBack";
+import { DelegateEx2 } from "./tokenManagement/Delegate";
 
 export default function InstructionsComponent() {
 	const router = useRouter();
@@ -26,7 +27,7 @@ export default function InstructionsComponent() {
 				<h2 className={styles.header_container}>MintToken</h2>
 				<MinterToken></MinterToken>
 				<h2 className={styles.header_container}>Delegate</h2>
-				<DelegateEx></DelegateEx>
+				<DelegateEx2></DelegateEx2>
 				<h2 className={styles.header_container}>CastVotes</h2>
 				<GetCastVoteEx1></GetCastVoteEx1>
 			</div>
