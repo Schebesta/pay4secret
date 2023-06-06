@@ -10,13 +10,13 @@
 - [x] query results on chain -
 - [x] Request voting tokens to be minted using the API -
 (bonus) 
-- Store a list of recent votes in the backend 
+- [ ]Store a list of recent votes in the backend 
 - display that on frontend
 (bonus) 
 - Use an oracle to fetch off-chain data to define the proposals instead of passing them in constructor
 (bonus +)
 - [x] Way to request token holded by random accounts
-- []
+- [ ]
 
 ## test
 - [x] getTokenNumber
