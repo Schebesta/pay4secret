@@ -31,6 +31,12 @@ function GetCastVote() {
     const [Proposal, setProposal] = useState('');
     const [VotedAmount, setVotedAmount] = useState('')
 
+    // History
+    const [TxHistory, setTxHistory] = useState('')
+    const [HistoryLoading, setHistoryLoading] = useState(false)
+
+    console.log("HistoryLoading", HistoryLoading)
+
     const chainId = 80001
     const provider = new ethers.providers.AlchemyProvider(chainId, process.env.ALCHEMY_API_KEY);
 
@@ -100,12 +106,11 @@ function GetCastVote() {
 }
 
 function getCastVote(
-    signer,
-    TokenizedBallotContract,
-    Proposal,
-    VotedAmount,
-    setLoading,
-    setTxData,
+    signer, TokenizedBallotContract,
+    Proposal, VotedAmount,
+    setLoading, setTxData,
+    TxHistory, setTxHistory, 
+    HistoryLoading, setHistoryLoading
 ) {
     setLoading(true);
     TokenizedBallotContract.connect(signer).vote(Proposal, VotedAmount)
@@ -114,5 +119,27 @@ function getCastVote(
             setLoading(false);
         }).catch((err) => {
             console.log(err);
+        });
+    
+    votingHistory(signer._address, Proposal, VotedAmount, TxHistory, setTxHistory, HistoryLoading, setHistoryLoading)
+    
+}
+
+
+function votingHistory(signerAddress, Proposal, VotedAmount, TxHistory, setTxHistory, HistoryLoading, setHistoryLoading) {
+    console.log('ddddd4564654654',signerAddress, Proposal, VotedAmount, setHistoryLoading, setTxHistory)
+    setHistoryLoading(true);
+
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ signerAddress, Proposal, VotedAmount})
+    };
+
+    fetch('http://localhost:3001/history-vote', requestOptions)
+        .then(response => response.json())
+        .then((data) => {
+            setTxHistory(data);
+            setHistoryLoading(false);
         });
 }

@@ -4,7 +4,7 @@
 - [x] requestToken
 
 -----
-## new
+## fonctionnalities
 - [x] delegate - from frontend
 - [x] cast votes -
 - [x] query results on chain -
@@ -14,9 +14,9 @@
 - [ ] display that on frontend
 (bonus) 
 - [ ] Use an oracle to fetch off-chain data to define the proposals instead of passing them in constructor
-(bonus +)
+(other)
 - [x] Way to request token holded by random accounts
-- [ ]
+- [ ] 
 
 ## test
 - [x] getTokenNumber
