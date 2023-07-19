@@ -1,13 +1,13 @@
 import styles from "../styles/InstructionsComponent.module.css";
 import Router, { useRouter } from "next/router";
-import { useSigner, useNetwork, useBalance } from 'wagmi';
-import { useState, useEffect } from 'react';
+// import { useSigner, useNetwork, useBalance } from 'wagmi';
+// import { useState, useEffect } from 'react';
 import WalletComponent from "./walletInfo/WalletInfo";
 import { GetTokenNumber } from "./tokenManagement/GetTokenNumber";
 import { MinterToken } from "./tokenManagement/RequestTokenMinted";
-import Profile from "./profile/Profile";
+// import Profile from "./profile/Profile";
 import { GetCastVoteEx1 } from "./ballotManagement/CastVotes";
-import { DelegateEx1 } from "./tokenManagement/DelegateBack";
+// import { DelegateEx1 } from "./tokenManagement/DelegateBack";
 import { DelegateEx2 } from "./tokenManagement/Delegate";
 import { QueryResultComponent } from "./ballotManagement/QueryResult";
 import ProductComponent from "./ProductComponents/ProductComponent";
@@ -35,8 +35,6 @@ export default function InstructionsComponent() {
 				<h2 className={styles.header_container}>QueryResult</h2>
 				<QueryResultComponent></QueryResultComponent>
 				<ProductComponent></ProductComponent>
-
-
 			</div>
 			<div className={styles.footer}>
 				Footer
