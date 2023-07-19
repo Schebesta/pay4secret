@@ -10,6 +10,7 @@ import { GetCastVoteEx1 } from "./ballotManagement/CastVotes";
 import { DelegateEx1 } from "./tokenManagement/DelegateBack";
 import { DelegateEx2 } from "./tokenManagement/Delegate";
 import { QueryResultComponent } from "./ballotManagement/QueryResult";
+import ProductComponent from "./ProductComponents/ProductComponent";
 
 export default function InstructionsComponent() {
 	const router = useRouter();
@@ -33,6 +34,8 @@ export default function InstructionsComponent() {
 				<GetCastVoteEx1></GetCastVoteEx1>
 				<h2 className={styles.header_container}>QueryResult</h2>
 				<QueryResultComponent></QueryResultComponent>
+				<ProductComponent></ProductComponent>
+
 
 			</div>
 			<div className={styles.footer}>
