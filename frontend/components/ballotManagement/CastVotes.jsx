@@ -72,7 +72,7 @@ function GetCastVote() {
         <>
 
             <p>Vote is done <p>Transaction at:  <a href={"https://mumbai.polygonscan.com/tx/" + txData.hash} target="_blank">{txData.hash}</a> </p>  <p></p> </p>
-            {/* <p>The Voting Transaction is {txData}</p> */}
+            <p>The Voting Transaction is {txData?.address}</p>
             {/* <p>Voted for the proposal : {Proposal}</p> */}
         </>
     );
@@ -121,7 +121,7 @@ function getCastVote(
             console.log(err);
         });
     
-    votingHistory(signer._address, Proposal, VotedAmount, TxHistory, setTxHistory, HistoryLoading, setHistoryLoading)
+    // votingHistory(signer._address, Proposal, VotedAmount, TxHistory, setTxHistory, HistoryLoading, setHistoryLoading)
     
 }
 
