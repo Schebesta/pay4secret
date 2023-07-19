@@ -70,8 +70,10 @@
           margin-left: -32rem;
           padding: 2rem;
           display: flex;
+          flex-direction: column;
           justify-content: space-between;
           align-items: center;
+          position: relative;
         }
 
         .crypto-details {
@@ -97,17 +99,21 @@
         .connect-button, .upload-button, .pay-button {
           margin-top: 1rem;
           font-family: 'IBM Plex Mono', monospace;
-          padding: 0.5rem 0.6rem;
+          padding: 0.85rem 1rem;
           position: relative;
           background-color: #000000;
           font-weight: 600;
-          font-size: 1.25rem;
+          font-size: 1.7rem;
           letter-spacing: 0.02rem;
           cursor: pointer;
           outline: none;
           border: transparent;
           width: 100%;
           text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-transform: uppercase;
         }
 
         .connect-button::after, .upload-button::after, .pay-button::after {
@@ -134,7 +140,7 @@
       </div>
       <div class="details">
         <h1 class="cost">$50</h1>
-        <h3 class="title">Pepe's Secret</h3>
+        <h3 class="title">Ricos Secret</h3>
       </div>
     </div>
 
@@ -148,12 +154,33 @@
           <label for="secret-price">Price of Secret</label>
           <input type="text" id="secret-price" placeholder="Price of Secret"/>
         </div>
+        <button class="connect-button" data-content="Connect Wallet">Connect Wallet</button>
+        <button class="pay-button" data-content="Pay for Secret">Pay for Secret</button>
         <div>
-          <button class="connect-button" data-content="Connect Wallet">Connect Wallet</button>
-          <button class="upload-button" data-content="Upload Secret">Upload Secret</button>
-          <button class="pay-button" data-content="Pay for Secret">Pay for Secret</button>
+          <input type="file" id="file-upload" style="display: none;">
+          <label for="file-upload" class="upload-button" data-content="Upload Secret">Upload Secret</label>
         </div>
       </div>
     </div>
+
+    <script>
+      const fileInput = document.getElementById('file-upload');
+
+      fileInput.addEventListener('change', handleFileUpload);
+
+      function handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (file) {
+          // Perform file upload operation here
+          console.log('File selected:', file);
+        }
+      }
+
+      const uploadButton = document.querySelector('.upload-button');
+
+      uploadButton.addEventListener('click', () => {
+        fileInput.click();
+      });
+    </script>
 </body>
 </html>
