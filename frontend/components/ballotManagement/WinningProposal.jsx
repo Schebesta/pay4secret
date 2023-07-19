@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 import WalletComponent from "../walletInfo/WalletInfo";
 import { fetchBody } from "../hook/fetch";
 import { ethers } from 'ethers';
-import * as tokenJson from '../../assets/MyToken.json';
-import * as tokenizedBallotJson from '../../assets/TokenizedBallot.json';
+import tokenJson from '../../assets/MyToken.json';
+import tokenizedBallotJson from '../../assets/TokenizedBallot.json';
 
 export function WinningProposalComponent() {
     return (

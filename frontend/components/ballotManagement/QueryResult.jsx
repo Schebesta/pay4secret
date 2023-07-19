@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 import WalletComponent from "../walletInfo/WalletInfo";
 import { fetchBody } from "../hook/fetch";
 import { ethers } from 'ethers';
-import * as tokenJson from '../../assets/MyToken.json';
-import * as tokenizedBallotJson from '../../assets/TokenizedBallot.json';
+import tokenJson from '../../assets/MyToken.json';
+import tokenizedBallotJson from '../../assets/TokenizedBallot.json';
 
 const TOKEN_ADDRESS="0xB6501b20Db186BBe42D7b50624AcBbdFAF20525a"
 const BALLOT_ADDRESS="0xAb4a059e83B3bFB731CfDE1DA0dC4d54fdF0a66E"

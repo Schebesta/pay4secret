@@ -2,7 +2,7 @@ import * as React from 'react';
 import Router, { useRouter } from "next/router";
 import { useSigner } from 'wagmi';
 import { ethers, Contract } from 'ethers';
-import * as tokenJson from '../../assets/MyToken.json';
+import tokenJson from '../../assets/MyToken.json';
 import { useState, useEffect } from 'react';
 import dotenv from "dotenv";
 
