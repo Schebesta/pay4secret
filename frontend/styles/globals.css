@@ -1,18 +1,18 @@
 html {
 	font-size: 10px;
   }
-  
+
   h1, h2, h3, p {
 	margin: 0;
 	padding: 0;
   }
-  
+
   *, *::before, *::after {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
   }
-  
+
   body {
 	font-family: 'IBM Plex Mono', monospace;
 	width: 100vw;
@@ -20,16 +20,16 @@ html {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #C3A4FF;
+	background-color: var(--backgroundColor, #C3A4FF);
 	line-height: 1.6;
   }
-  
+
   img {
 	width: 100%;
 	object-fit: cover;
   }
-  
-  .productContainer {
+
+  .product-container {
 	border: 5px solid #000000;
 	background: #DBFF6E;
 	width: 75rem;
@@ -39,25 +39,25 @@ html {
 	justify-content: center;
 	padding-inline: 7rem;
   }
-  
-  .productContainer .image {
+
+  .product-container .image {
 	width: 35rem;
 	transform: rotate(-20deg);
 	margin-left: -4rem;
   }
-  
-  .productContainer .details .cost {
+
+  .product-container .details .cost {
 	font-size: 2rem;
 	font-weight: 600;
   }
-  
-  .productContainer .details .title {
+
+  .product-container .details .title {
 	font-size: 1.6rem;
 	font-weight: 500;
 	text-transform: uppercase;
   }
-  
-  .cardContainer {
+
+  .card-container {
 	border: 5px solid #000000;
 	background-color: #ffffff;
 	height: 35rem;
@@ -68,28 +68,28 @@ html {
 	justify-content: space-between;
 	align-items: center;
   }
-  
-  .cryptoDetails {
+
+  .crypto-details {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	flex-grow: 1;
 	padding-right: 2rem;
   }
-  
+
   .field {
 	display: flex;
 	flex-direction: column;
   }
-  
+
   input {
 	font-family: 'IBM Plex Mono', monospace;
 	padding: 0.5rem 0;
 	font-size: 1.7rem;
 	width: 100%;
   }
-  
-  .connectButton, .uploadButton, .payButton {
+
+  .connect-button, .upload-button, .pay-button {
 	margin-top: 1rem;
 	font-family: 'IBM Plex Mono', monospace;
 	padding: 0.5rem 0.6rem;
@@ -104,8 +104,8 @@ html {
 	width: 100%;
 	text-align: center;
   }
-  
-  .connectButton::after, .uploadButton::after, .payButton::after {
+
+  .connect-button::after, .upload-button::after, .pay-button::after {
 	content: attr(data-content);
 	position: absolute;
 	width: 100%;
@@ -120,4 +120,3 @@ html {
 	color: #000000;
 	transform: translate(-0.4rem,-0.4rem);
   }
-  
