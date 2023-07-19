@@ -69,19 +69,17 @@
           width: 60rem;
           margin-left: -32rem;
           padding: 2rem;
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          grid-template-rows: repeat(6, 1fr);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
 
         .crypto-details {
-          grid-area: 2/1/6/4;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          row-gap: 1rem;
-          column-gap: 1rem;
-          grid-template-columns: repeat(3, 1fr);
+          flex-grow: 1;
+          padding-right: 2rem;
         }
 
         .field {
@@ -91,46 +89,9 @@
 
         input {
           font-family: 'IBM Plex Mono', monospace;
-          padding: 0.5rem 0.5rem;
+          padding: 0.5rem 0;
           font-size: 1.7rem;
-          width: 90%;
-        }
-
-        .wallet-address {
-          grid-area: 1/1/1/4;
-          align-self: end;
-        }
-
-        .secret-price {
-          grid-area: 2/1/2/4;
-          align-self: end;
-        }
-
-        .field input {
-          border-bottom: 2px solid #000000;
-          border-top: none;
-          border-left: none;
-          border-right: none;
-          outline: none;
-        }
-
-        .babylon {
-            display: inline-flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            grid-area: 1/4/3/5;
-            justify-self: end;
-        }
-
-        .babylon .logo {
-            width: 10rem;
-            height: 10rem;
-            opacity: 0.8;
-        }
-
-        .name {
-          font-size: 1rem;
+          width: 100%;
         }
 
         .connect-button, .upload-button, .pay-button {
@@ -142,12 +103,10 @@
           font-weight: 600;
           font-size: 1.25rem;
           letter-spacing: 0.02rem;
-          display: inline-block;
           cursor: pointer;
           outline: none;
           border: transparent;
-          grid-area: 4/1/4/4;
-          width: 60%;
+          width: 100%;
           text-align: center;
         }
 
@@ -189,13 +148,11 @@
           <label for="secret-price">Price of Secret</label>
           <input type="text" id="secret-price" placeholder="Price of Secret"/>
         </div>
-        <button class="connect-button" data-content="Connect Wallet">Connect Wallet</button>
-        <button class="upload-button" data-content="Upload Secret">Upload Secret</button>
-        <button class="pay-button" data-content="Pay for Secret">Pay for Secret</button>
-      </div>
-      <div class="babylon">
-        <img class="logo" src="https://github.com/Schebesta/pay4secret/blob/main/pay4secret%20logo.png?raw=true" alt="Babylon Logo" border="0" />
-        <h1 class="name"></h1>
+        <div>
+          <button class="connect-button" data-content="Connect Wallet">Connect Wallet</button>
+          <button class="upload-button" data-content="Upload Secret">Upload Secret</button>
+          <button class="pay-button" data-content="Pay for Secret">Pay for Secret</button>
+        </div>
       </div>
     </div>
 </body>
