@@ -11,7 +11,7 @@ function ProductComponent() {
         </div>
         <div className="details">
             <h1 className="cost">$50</h1>
-            <h3 className="title">Pepe's Secret</h3>
+            <h3 className="title">RICO's Secret</h3>
         </div>
     </div>
   );
