@@ -20,4 +20,6 @@ We've developed an app that facilitates people to share content based on a desig
 ## Additional Features:
 1. The application supports payments through wrapped token using Wormhole
 
+## Other information:
+https://miro.com/app/board/uXjVM0vbqcE=/
 
