@@ -5,6 +5,7 @@ import UploadSecretComponent from "./UploadSecretComponent";
 import PayForSecretComponent from "./PayForSecretComponent";
 import ProductComponent from "./ProductComponents/ProductComponent";
 import FormToFillComponent from "./FormToFillComponent";
+import { Encrypt } from "./Encryption";
 
 export default function InstructionsComponent() {
 	const router = useRouter();
@@ -29,6 +30,9 @@ export default function InstructionsComponent() {
 				</div>
 				<div>
 					<p><PayForSecretComponent /></p>
+				</div>
+				<div>
+					<p><Encrypt /></p>
 				</div>
 			</div>
 		</div>
