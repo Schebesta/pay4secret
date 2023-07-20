@@ -1,21 +1,18 @@
-import styles from "../styles/ConnectWalletComponent.module.css";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import React from 'react';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import styles from "../styles/ConnectWalletComponent.module.css"
 
-// export default function ConnectWalletComponent() {
-//   return (
-//     <div className={styles.field}>
-//       <label htmlFor="wallet-address">Wallet Address</label>
-//       <input type="text" id="wallet-address" placeholder="Wallet Address" />
-//       <ConnectButton className={styles.connectButton} data-content="Connect Wallet">Connect Wallet</ConnectButton>
-//     </div>
-//   );
-// }
+function ConnectWalletComponent() {
+  const handleConnectWallet = () => {
+    // Handle connect wallet logic here
+    console.log('Connecting wallet...');
+  };
 
-export default function ConnectWalletComponent() {
   return (
     <div className={styles.field}>
-      <ConnectButton className={styles.connectButton} data-content="Connect Wallet">Connect Wallet</ConnectButton>
+      <ConnectButton className="connect-button" onClick={handleConnectWallet}>Connect</ConnectButton>
     </div>
   );
 }
 
+export default ConnectWalletComponent;

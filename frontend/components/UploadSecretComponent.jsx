@@ -13,7 +13,7 @@ import styles from "../styles/UploadSecretComponent.module.css";
 export default function UploadSecretComponent() {
   return (
     <div className={styles.field}>
-      <button className={styles.uploadButton} data-content="Upload Secret">Upload Secret</button>
+      <button className="upload-button" data-content="Upload Secret">Upload Secret</button>
     </div>
   );
 }

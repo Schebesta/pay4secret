@@ -7,26 +7,35 @@
     flex-direction: column;
     justify-content: center;
     padding-inline: 7rem;
-}
-
-.productContainer .image {
+  }
+  
+  .productContainer .image {
     width: 35rem;
-    transform: rotate(-20deg);
     margin-left: -4rem;
-}
-
-.productContainer .details .cost {
+    animation: rotateImage 4s infinite linear;
+  }
+  
+  @keyframes rotateImage {
+    from {
+      transform: rotate(-20deg);
+    }
+    to {
+      transform: rotate(340deg);
+    }
+  }
+  
+  .productContainer .details .cost {
     font-size: 2rem;
     font-weight: 600;
-}
-
-.productContainer .details .title {
+  }
+  
+  .productContainer .details .title {
     font-size: 1.6rem;
     font-weight: 500;
     text-transform: uppercase;
-}
-
-.cardContainer {
+  }
+  
+  .cardContainer {
     border: 5px solid #000000;
     background-color: #ffffff;
     height: 35rem;
@@ -36,22 +45,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.cryptoDetails {
+  }
+  
+  .cryptoDetails {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
     padding-right: 2rem;
-}
-
-.field {
+  }
+  
+  .field {
     display: flex;
     flex-direction: column;
-}
-
-.connectButton, .uploadButton, .payButton {
+  }
+  
+  .connectButton,
+  .uploadButton,
+  .payButton {
     margin-top: 1rem;
     font-family: 'IBM Plex Mono', monospace;
     padding: 0.5rem 0.6rem;
@@ -65,9 +76,11 @@
     border: transparent;
     width: 100%;
     text-align: center;
-}
-
-.connectButton::after, .uploadButton::after, .payButton::after {
+  }
+  
+  .connectButton::after,
+  .uploadButton::after,
+  .payButton::after {
     content: attr(data-content);
     position: absolute;
     width: 100%;
@@ -80,5 +93,6 @@
     justify-content: center;
     align-items: center;
     color: #000000;
-    transform: translate(-0.4rem,-0.4rem);
-}
+    transform: translate(-0.4rem, -0.4rem);
+  }
+  
