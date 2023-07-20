@@ -1,22 +1,25 @@
+We've developed an app that facilitates people to share content based on a designated price.
 
-# Create a voting dApp to :
-## old
-- [x] requestToken
+# User Story
+## Funds Receiver Story:
+1. The funds receiver initiates by connecting their wallet.
+2. They will determine the value of the content they are sharing.
+3. Next, they will upload the content.
+4. Utilizing NuCypher Ts (THRESHOLD bounty), they will:
+   - Encrypt the content file.
+   - Initiate a $1 USDC transaction which gets transferred to Pay4Secret project.
+   - Generate a shareable link that can be paid for to unveil the content.
+   - This link will then be shared on a Discord server.
 
------
-## fonctionnalities
-- [x] delegate - from frontend
-- [x] cast votes -
-- [x] query results on chain -
-- [x] Request voting tokens to be minted using the API -
-(bonus) 
-- [ ] Store a list of recent votes in the backend 
-- [ ] display that on frontend
-(bonus) 
-- [ ] Use an oracle to fetch off-chain data to define the proposals instead of passing them in constructor
-(other)
-- [x] Way to request token holded by random accounts
-- [ ] 
+## Content Receiver Story:
+1. Search for a suitable offer on Discord.
+2. Connect their wallet through the application link.
+3. Purchase the content in USDC at the price set by the funds receiver.
+4. Upon confirmation of the transaction on the blockchain, the content receiver can download the encrypted content using NuCypher.
 
-## test
-- [x] getTokenNumber
+## Additional Features:
+1. The application supports payments through wrapped token using Wormhole
+
+## Other informations:
+https://miro.com/app/board/uXjVM0vbqcE=/
+
