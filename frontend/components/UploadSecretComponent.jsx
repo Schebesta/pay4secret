@@ -44,6 +44,11 @@ export default function UploadSecretComponent() {
         className="upload-button" 
         data-content="Upload Secret" 
         onClick={handleButtonClick}>Upload Secret</button>
+      <button 
+        className="upload-button"
+        data-content="Encrypt Message"
+        onClick={handleButtonClick}>Submit Message</button>
+        
       {uploaded && <p>File has been uploaded!</p>}
     </div>
   );

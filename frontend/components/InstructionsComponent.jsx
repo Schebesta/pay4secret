@@ -19,16 +19,10 @@ export default function InstructionsComponent() {
 
 
 		<div className="card-container">
-				<div>
-					<p><FormToFillComponent /></p>
-				</div>
-				<div>
+				<div className="crypto-details">
 					<p><ConnectWalletComponent /></p>
-				</div>
-				<div>
+					<p><FormToFillComponent /></p>
 					<p><UploadSecretComponent /></p>
-				</div>
-				<div>
 					<p><PayForSecretComponent /></p>
 				</div>
 				<div>
