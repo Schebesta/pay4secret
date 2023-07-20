@@ -13,15 +13,19 @@ export default function InstructionsComponent() {
       </header>
       <div className={styles.buttons_container}>
         <ProductComponent />
-      </div>
-      <body>
-        <ConnectWalletComponent />
-        <UploadSecretComponent />
-        <PayForSecretComponent />
-      </body>
-      <div className={styles.footer}>
-        Footer
-      </div>
+		</div>
+			<div>
+				<p><ConnectWalletComponent/></p>
+			</div>
+			<div>
+				<p><UploadSecretComponent/></p>        
+			</div>
+			<div>
+				<p><PayForSecretComponent/></p>
+			</div>
+		<div className={styles.footer}>
+			Footer
+		</div>
     </div>
   );
 }

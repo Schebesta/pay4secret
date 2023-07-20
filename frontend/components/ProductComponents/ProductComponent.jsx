@@ -1,5 +1,6 @@
 import React from 'react';
 import './ProductComponent.module.css';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 
 function ProductComponent() {
@@ -12,24 +13,6 @@ function ProductComponent() {
         <div className="details">
             <h1 className="cost">$50</h1>
             <h3 className="title">Pepe's Secret</h3>
-        </div>
-        <div className="cardContainer">
-            <div className="cryptoDetails">
-                <div className="field walletAddress">
-                    <label htmlFor="wallet-address">Wallet Address</label>
-                    <input type="text" id="wallet-address" placeholder="Wallet Address"/>
-                </div>
-                <div className="field secretPrice">
-                    <label htmlFor="secret-price">Price of Secret</label>
-                    <input type="text" id="secret-price" placeholder="Price of Secret"/>
-                </div>
-                <div>
-                    {/* Replace these buttons with your components */}
-                    <button className="connectButton">Connect Wallet</button>
-                    <button className="uploadButton">Upload Secret</button>
-                    <button className="payButton">Pay for Secret</button>
-                </div>
-            </div>
         </div>
     </div>
   );

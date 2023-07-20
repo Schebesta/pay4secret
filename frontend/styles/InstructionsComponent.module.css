@@ -94,3 +94,23 @@ line-height: 28px;
 	gap: 2rem;
 	margin-bottom: .5rem;
 }
+
+.connect-button, .upload-button, .pay-button {
+	margin-top: 1rem;
+	font-family: 'IBM Plex Mono', monospace;
+	padding: 0.85rem 1rem;
+	position: relative;
+	background-color: #000000;
+	font-weight: 600;
+	font-size: 1.7rem;
+	letter-spacing: 0.02rem;
+	cursor: pointer;
+	outline: none;
+	border: transparent;
+	width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-transform: uppercase;
+  }

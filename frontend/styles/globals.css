@@ -92,24 +92,24 @@ width: 100%;
 }
 
 .connect-button, .upload-button, .pay-button {
-margin-top: 1rem;
-font-family: 'IBM Plex Mono', monospace;
-padding: 0.85rem 1rem;
-position: relative;
-background-color: #000000;
-font-weight: 600;
-font-size: 1.7rem;
-letter-spacing: 0.02rem;
-cursor: pointer;
-outline: none;
-border: transparent;
-width: 100%;
-text-align: center;
-display: flex;
-justify-content: center;
-align-items: center;
-text-transform: uppercase;
-}
+	margin-top: 1rem;
+	font-family: 'IBM Plex Mono', monospace;
+	padding: 0.85rem 1rem;
+	position: relative;
+	background-color: #000000;
+	font-weight: 600;
+	font-size: 1.7rem;
+	letter-spacing: 0.02rem;
+	cursor: pointer;
+	outline: none;
+	border: transparent;
+	width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-transform: uppercase;
+  }
 
 .connect-button::after, .upload-button::after, .pay-button::after {
 content: attr(data-content);
